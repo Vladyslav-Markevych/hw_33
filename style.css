@@ -1,5 +1,9 @@
+body {
+  margin: 0;
+}
 h1 {
   text-align: center;
+  margin-top: 0;
 }
 
 .modal {
@@ -15,6 +19,7 @@ h1 {
   background-color: rgba(232, 232, 232, 0.9);
   border: 2px solid;
   padding-top: 20px;
+  z-index: 2;
 }
 .info {
   display: flex;
@@ -33,4 +38,21 @@ h1 {
   right: 10px;
   background-color: transparent;
   border-radius: 10px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.background {
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
 }

@@ -68,6 +68,7 @@ const images = [
 function addImages() {
   let wrapper = document.createElement("div");
   wrapper.id = "wrapper";
+  wrapper.className = "wrapper";
   const fragment = new DocumentFragment();
   images.forEach((elem) => {
     let img = new Image();
@@ -78,9 +79,6 @@ function addImages() {
   });
 
   wrapper.append(fragment);
-
-  wrapper.style.cssText =
-    "display: grid; grid-template-columns: repeat(4, 1fr);  grid-gap: 5px; max-width: 400px; margin: 0 auto";
 
   document.body.append(wrapper);
 }
@@ -94,11 +92,15 @@ function listener(event) {
     let modalImage = document.getElementById("modalImage");
     let textModal = document.getElementById("textModal");
     let date = document.getElementById("date");
-    modalImage.alt = event.target.alt;
-    modalImage.src = event.target.src;
-    textModal.textContent = event.target.alt;
-    date.textContent = event.target.dataset.date;
+
+    let { alt, src, dataset } = event.target;
+    modalImage.alt = alt;
+    modalImage.src = src;
+    textModal.textContent = alt;
+    date.textContent = dataset.date;
+
     document.getElementById("modal").style.display = "block";
+    document.getElementsByClassName("background")[0].style.display = "block";
   }
 }
 
@@ -116,5 +118,6 @@ firstDiv.addEventListener("click", listener);
 
 document.getElementById("close").addEventListener("click", () => {
   document.getElementById("modal").style.display = "none";
+  document.getElementsByClassName("background")[0].style.display = "none";
   firstDiv.addEventListener("click", listener);
 });
